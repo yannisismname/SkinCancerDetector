@@ -10,7 +10,7 @@ This app helps you understand what a spot on your skin might be. You upload a cl
 What sets it apart is that it shows its working: the app highlights the exact area of the photo that influenced its decision, so you can see why it gave that answer instead of just trusting a label.
 The final model was tested on 1,503 photos it had never seen before and identified the correct type 76.6% of the time — including catching about 7 in 10 melanomas, the most dangerous type in the set.
 
-Model file needed: the trained model (model.h5, ~109 MB) is too big for this repo — download it from the v2.0 release and place it in the model/ folder, next to classes.json, before running the backend.
+Model file needed: the trained model (model.h5, ~109 MB) is too big for this repo. Download it from the [v2.0 release](https://github.com/yannisismname/SkinCancerDetector/releases/tag/v2.0) and place it in the model/ folder, next to classes.json, before running the backend.
 
 
 ## Project structure
