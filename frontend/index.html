@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Skin Cancer AI — Early Screening Assistant</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 40 40" role="img">
+        <circle cx="17" cy="17" r="10.5" fill="none" stroke="currentColor" stroke-width="3" />
+        <path d="m25 25 8 8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="3" />
+        <circle cx="17" cy="17" r="3.5" fill="currentColor" />
+      </svg>
+    </span>
+    <div>
+      <h1>Skin Cancer AI</h1>
+      <p>AI-assisted lesion screening</p>
+    </div>
+  </div>
+  <div class="backend-status" id="backendStatus" title="Backend connection">
+    <span class="dot"></span><span id="backendStatusText">checking…</span>
+  </div>
+</header>
+
+<main>
+  <section class="card upload-card">
+    <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Upload a skin lesion image">
+      <input type="file" id="fileInput" accept="image/*" hidden />
+      <img id="preview" class="preview hidden" alt="Uploaded lesion preview" />
+      <div class="dropzone-hint" id="dropzoneHint">
+        <div class="upload-icon">⇪</div>
+        <p><strong>Drop a lesion photo here</strong> or <span class="link">browse files</span></p>
+        <p class="muted">JPG or PNG, clear close-up works best</p>
+      </div>
+    </div>
+    <div class="actions">
+      <button id="analyzeBtn" class="btn primary" disabled>Analyze image</button>
+      <button id="clearBtn" class="btn ghost" disabled>Clear</button>
+    </div>
+    <div class="sample-row">
+      <span class="sample-label">Try a sample photo</span>
+      <a class="btn sample-btn" href="https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000" target="_blank" rel="noopener noreferrer">Get test photos (Kaggle)</a>
+      <span class="sample-status muted small" aria-live="polite"></span>
+    </div>
+    <p class="sample-attribution muted small">Sample photos from the HAM10000 dataset (via Kaggle), shared for education/research.</p>
+    <p class="error hidden" id="errorMsg"></p>
+  </section>
+
+  <section class="card results hidden" id="resultsCard">
+    <div class="results-head">
+      <h2>Analysis result</h2>
+      <span class="badge" id="confidenceBadge"></span>
+    </div>
+    <div class="prediction-row">
+      <div class="prediction-main">
+        <p class="label-muted">Most likely</p>
+        <p class="prediction" id="predictionLabel">–</p>
+        <p class="meaning-line" id="meaningLine"></p>
+        <p class="caution-note hidden" id="cautionNote">Note: the model is less reliable for this type — treat this result with extra caution.</p>
+        <div class="confidence-bar"><div id="confidenceFill"></div></div>
+        <p class="confidence-text" id="confidenceText">–</p>
+        <p class="confidence-note">Confidence = how sure the model feels, not a guarantee it is right.</p>
+      </div>
+      <div class="heatmap-box">
+        <p class="label-muted">What the model focused on</p>
+        <img id="heatmapImg" class="heatmap hidden" alt="Grad-CAM heatmap overlay" />
+        <p class="muted small hidden" id="heatmapLoading">Generating heatmap…</p>
+      </div>
+    </div>
+    <details class="all-classes">
+      <summary>See all class scores</summary>
+      <ul id="classList"></ul>
+    </details>
+  </section>
+
+  <section class="recent-section hidden" id="recentSection" aria-labelledby="recentHeading">
+    <h2 id="recentHeading">Recent results</h2>
+    <div class="recent-list" id="recentList"></div>
+  </section>
+
+  <p class="disclaimer">
+    ⚕️ This tool is for educational and research purposes only — it is not a medical
+    device and cannot diagnose skin cancer. Always consult a dermatologist for any
+    concerning skin changes.
+  </p>
+</main>
+
+<footer>
+  <p>Skin Cancer AI · CNN classifier served with FastAPI</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.dist/
+
+# TensorFlow / ML
+*.h5
+*.keras
+*.pb
+checkpoints/
+lightning_logs/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temp / backups
+*.bak-*
+*.tmp
+tmp/
+
+# Node (if you ever add tooling)
+node_modules/

@@ -1,0 +1,8 @@
+# Requires Python 3.12 for the TensorFlow wheels used in this project.
+fastapi>=0.110
+uvicorn[standard]>=0.29
+python-multipart>=0.0.9
+pillow>=10.0
+numpy>=1.26
+tensorflow>=2.16
+opencv-python>=4.9
